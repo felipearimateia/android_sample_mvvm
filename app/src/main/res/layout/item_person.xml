@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="person"
+            type="info.arimateia.androidmvm.viewmodel.PersonViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/people_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{person.name}"
+            android:layout_marginBottom="8dp"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/people_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{person.gender}"
+            android:layout_marginBottom="8dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"/>
+
+    </LinearLayout>
+
+</layout>
