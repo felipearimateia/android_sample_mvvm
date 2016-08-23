@@ -60,6 +60,7 @@ public abstract class BaseAdapter<T, VH extends RecyclerView.ViewHolder> extends
     public void set(@Nullable Collection<T> items) {
 
         if (this.items == items) {
+            notifyDataSetChanged();
             return;
         }
 

@@ -1,4 +1,4 @@
-package info.arimateia.androidmvm.model.repository.remote;
+package info.arimateia.androidmvm.repository.remote;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

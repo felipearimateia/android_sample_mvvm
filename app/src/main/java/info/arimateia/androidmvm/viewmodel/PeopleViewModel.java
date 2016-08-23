@@ -1,14 +1,18 @@
 package info.arimateia.androidmvm.viewmodel;
 
 import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 import android.databinding.ObservableArrayList;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import info.arimateia.androidmvm.AppContext;
+import info.arimateia.androidmvm.business.PeopleModel;
 import info.arimateia.androidmvm.model.Person;
-import info.arimateia.androidmvm.model.repository.PeopleRepository;
-import rx.android.schedulers.AndroidSchedulers;
+
 
 /**
  * Created by felipets on 8/22/16.
@@ -16,24 +20,32 @@ import rx.android.schedulers.AndroidSchedulers;
 
 public class PeopleViewModel extends BaseObservable {
 
-    @Bindable
-    public ObservableArrayList<PersonViewModel> people;
-
-    private PeopleRepository repository;
     private static final String TAG = PeopleViewModel.class.getSimpleName();
 
+    public final ObservableArrayList<PersonViewModel> people = new ObservableArrayList<>();
+
+    @Inject
+    PeopleModel peopleModel;
+
+
     public PeopleViewModel() {
-        this.people = new ObservableArrayList<>();
-        this.repository = new PeopleRepository();
+        AppContext.component().inject(this);
     }
 
-    private void addPerson(Person person) {
-        this.people.add(new PersonViewModel(person));
+    private void addPerson(List<Person> people) {
+
+        List<PersonViewModel> items = new ArrayList<>();
+
+        for (Person person: people) {
+            items.add(new PersonViewModel(person));
+        }
+
+        this.people.addAll(items);
     }
 
-    public void loadPeople() {
-        repository.getPeople()
-                .observeOn(AndroidSchedulers.mainThread())
+    public void fetchData() {
+
+        peopleModel.getPeople()
                 . subscribe(person -> addPerson(person),
                         error -> Log.d(TAG, error.getMessage(), error),
                         ()-> {

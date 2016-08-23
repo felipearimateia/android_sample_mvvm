@@ -11,13 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import info.arimateia.androidmvm.R;
 import info.arimateia.androidmvm.databinding.ActivityMainBinding;
 import info.arimateia.androidmvm.viewmodel.PeopleViewModel;
-import info.arimateia.androidmvm.viewmodel.PersonViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        peopleViewModel.loadPeople();
+        peopleViewModel.fetchData();
 
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
