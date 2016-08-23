@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import java.util.Collection;
 import java.util.List;
 
 import info.arimateia.androidmvm.R;
@@ -21,7 +22,7 @@ public class PeopleAdapter extends BaseAdapter<PersonViewModel, PeopleAdapter.Vi
 
     private final LayoutInflater inflater;
 
-    public PeopleAdapter(Context context, List<PersonViewModel> itens) {
+    public PeopleAdapter(Context context, Collection<PersonViewModel> itens) {
         super(context, itens);
         inflater = LayoutInflater.from(context);
     }

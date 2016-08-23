@@ -2,6 +2,7 @@ package info.arimateia.androidmvm.view;
 
 import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableArrayList;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -38,8 +39,10 @@ public class MainActivity extends AppCompatActivity {
         peopleViewModel.loadPeople();
 
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.list_items);
         recyclerView.setLayoutManager(manager);
+        recyclerView.setAdapter(new PeopleAdapter(this, new ObservableArrayList<>()));
     }
 
     @Override
@@ -65,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @BindingAdapter("items")
-    public static void setItems(RecyclerView recyclerView, Collection<PersonViewModel> items) {
-        recyclerView.setAdapter(new PeopleAdapter(recyclerView.getContext(), new ArrayList<>(items)));
+    public static <T> void setItems(RecyclerView recyclerView, Collection<T> items) {
+        BaseAdapter adapter = (BaseAdapter)recyclerView.getAdapter();
+        adapter.set(items);
     }
 }
