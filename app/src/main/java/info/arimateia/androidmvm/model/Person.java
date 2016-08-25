@@ -33,4 +33,20 @@ public class Person {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person person = (Person) o;
+
+        return url.equals(person.url);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return url.hashCode();
+    }
 }
