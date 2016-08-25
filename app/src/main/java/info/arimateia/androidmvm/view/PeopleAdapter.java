@@ -29,7 +29,6 @@ public class PeopleAdapter extends BaseAdapter<PersonViewModel, PeopleAdapter.Vi
 
     @Override
     public ViewHoler onCreateViewHolder(ViewGroup parent, int viewType) {
-
         ItemPersonBinding personBinding = DataBindingUtil.inflate(inflater,
                 R.layout.item_person, parent, false);
         return new ViewHoler(personBinding);
@@ -38,7 +37,7 @@ public class PeopleAdapter extends BaseAdapter<PersonViewModel, PeopleAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHoler holder, int position) {
         PersonViewModel viewModel = getItem(position);
-        holder.personBinding.setPerson(viewModel);
+        holder.personBinding.setViewModel(viewModel);
     }
 
     class ViewHoler extends RecyclerView.ViewHolder {
