@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            name="person"
+            name="viewModel"
             type="info.arimateia.androidmvm.viewmodel.PersonViewModel"/>
     </data>
 
@@ -16,14 +16,14 @@
             android:id="@+id/people_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{person.name}"
+            android:text="@{viewModel.name}"
             android:layout_marginBottom="8dp"/>
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/people_gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{person.gender}"
+            android:text="@{viewModel.gender}"
             android:layout_marginBottom="8dp"/>
 
         <View
