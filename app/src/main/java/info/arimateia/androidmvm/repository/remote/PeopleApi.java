@@ -1,9 +1,9 @@
 package info.arimateia.androidmvm.repository.remote;
 
-import com.google.gson.JsonObject;
-
 import info.arimateia.androidmvm.model.PeopleResults;
+import info.arimateia.androidmvm.model.Person;
 import retrofit2.http.GET;
+import retrofit2.http.Url;
 import rx.Observable;
 
 /**
@@ -14,4 +14,7 @@ public interface PeopleApi {
 
     @GET("people")
     Observable<PeopleResults> people();
+
+    @GET
+    Observable<Person> getPerson(@Url String url);
 }
